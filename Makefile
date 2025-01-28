@@ -1,9 +1,9 @@
-OUT_ZIP=Fedora37.zip
-LNCR_EXE=Fedora37.exe
+OUT_ZIP=Fedora41.zip
+LNCR_EXE=Fedora41.exe
 
 DLR=curl
 DLR_FLAGS=-L
-LNCR_ZIP_URL=https://github.com/yuk7/wsldl/releases/download/22020900/icons.zip
+LNCR_ZIP_URL=https://github.com/yuk7/wsldl/releases/download/24102000/icons.zip
 LNCR_ZIP_EXE=Fedora.exe
 
 all: $(OUT_ZIP)
@@ -43,7 +43,7 @@ rootfs: base.tar
 
 base.tar:
 	@echo -e '\e[1;31mExporting base.tar using docker...\e[m'
-	docker run --name fedorawsl library/fedora@sha256:99aa8919afd1880064ec915dba44cdc5b52808667717f605750329d55006538a /bin/bash -c "dnf update -y; rpm -e --nodeps sudo; dnf clean all; pwconv; grpconv; chmod 0744 /etc/shadow; chmod 0744 /etc/gshadow;"
+	docker run --name fedorawsl library/fedora@sha256:3ec60eb34fa1a095c0c34dd37cead9fd38afb62612d43892fcf1d3425c32bc1e /bin/bash -c "dnf update -y; dnf install cracklib-dicts -y; dnf clean all; pwconv; grpconv; chmod 0744 /etc/shadow; chmod 0744 /etc/gshadow;"
 	docker export --output=base.tar fedorawsl
 	docker rm -f fedorawsl
 
@@ -56,4 +56,4 @@ clean:
 	-rm rootfs.tar.gz
 	-sudo rm -r rootfs
 	-rm base.tar
-	-docker rmi library/fedora@sha256:99aa8919afd1880064ec915dba44cdc5b52808667717f605750329d55006538a
+	-docker rmi library/fedora@sha256:3ec60eb34fa1a095c0c34dd37cead9fd38afb62612d43892fcf1d3425c32bc1e
