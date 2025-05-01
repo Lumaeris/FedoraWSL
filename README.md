@@ -1,6 +1,9 @@
 # FedoraWSL
 **Fedora on WSL 2 (Windows 10 1903 or later, Windows 11) based on [wsldl](https://github.com/yuk7/wsldl)**
 
+> [!WARNING]
+> Deprecated. Use [official images](https://docs.fedoraproject.org/en-US/cloud/wsl/) instead.
+
 ![screenshot](https://raw.githubusercontent.com/Lumaeris/FedoraWSL/master/img/screenshot.png)
 
 ### [Download](https://github.com/Lumaeris/FedoraWSL/releases)
